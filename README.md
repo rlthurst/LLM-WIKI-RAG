@@ -94,37 +94,6 @@ You can set the Ollama server via the environment variable `OLLAMA_HOST`, the de
 
 NOTE: It would be much better to generate the embeddings with the ollama service, this is not yet supported in LlamaIndex though.
 
-### OpenShift
-
-Create a new project (namespace) for your workshop and deploy the ollama service in it:
-
-```
-oc new-project my-workshop
-oc apply -f deployments/ollama.yaml
-```
-
-If you want to enable GPU support you have to have to install the NVIDIA GPU Operator and Node Feature Discovery (NFD) Operator as described on the [AI on OpenShift](https://ai-on-openshift.io/odh-rhods/nvidia-gpus/) page, then deploy `ollama-gpu.yaml` instead.
-
-```
-oc apply -f deployments/ollama-gpu.yaml
-```
-
-The streamlit application (linuxbot) can deployed as:
-
-```
-oc apply -f deployments/linuxbot.yaml
-```
-
-We have published a preconfigured container image on [quay.io/sroecker](https://quay.io/sroecker/linuxbot-app) that is used in this deployment.
-
-In order to debug your application and ollama service you can deploy a curl image like this:
-
-```
-oc run mycurl --image=curlimages/curl -it -- sh
-oc attach mycurl -c mycurl -i -t
-oc delete pod mycurl
-```
-
 ## References
 
 - [Build a chatbot with custom data sources, powered by LlamaIndex](https://blog.streamlit.io/build-a-chatbot-with-custom-data-sources-powered-by-llamaindex/)
