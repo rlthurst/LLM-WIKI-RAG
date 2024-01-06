@@ -29,26 +29,24 @@ pip install -r requirements.txt
 
 Then start streamlit with:
 ```
-streamlit run app.py
+streamlit run wiki.py
 ```
 
-Modify the system prompt and copy different data sources to `docs/` in order to create your own version of the chatbot.
+Modify the system prompt and copy different data sources to `wiki_zim/` in order to create your own version of the chatbot.
 You can set the ollama host via the enviroment variable `OLLAMA_HOST`.
 
-You can download models locally with `ollama pull zephyr` or via API:
+You can download models locally with `ollama pull mistral` or via API:
 
 ```
-curl -X POST http://ollama:11434/api/pull -d '{"name": "zephyr"}'
+curl -X POST http://ollama:11434/api/pull -d '{"name": "mistral"}'
 ```
 
-First start the ollama service as described and download the [Zephyr model](https://ollama.ai/library/zephyr).
+First start the ollama service as described and download the [Mistral model](https://ollama.ai/library/mistral).
 To test the ollama server you can call the generate API:
 
 ```
-curl -X POST http://ollama:11434/api/generate -d '{"model": "zephyr", "prompt": "Why is the sky blue?"}'
+curl -X POST http://ollama:11434/api/generate -d '{"model": "mistral", "prompt": "Why is the sky blue?"}'
 ```
-
-All of these commands are also documented in our [cheat sheet](cheatsheet.txt).
 
 ## Deployment
 
